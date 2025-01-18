@@ -1,0 +1,3 @@
+
+#generate component using the angular cli:
+ng generate component name_of_the_component
