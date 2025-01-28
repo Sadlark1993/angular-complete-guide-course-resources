@@ -21,6 +21,7 @@ export class UserComponent {
   };
 
   onClickUser() {
+    // This will emit the data and trigger the event with the name of the @output
     this.select.emit(this.id);
   }
 }
