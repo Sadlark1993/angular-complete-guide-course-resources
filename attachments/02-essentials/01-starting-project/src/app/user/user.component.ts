@@ -2,6 +2,13 @@ import { Component, computed, EventEmitter, input, Input, Output, output, signal
 
 import { DUMMY_USERS } from '../dummy-users';
 
+// You can user interfaces to do it also
+type UserType = {
+  id: string,
+  name: string,
+  avatar: string
+}
+
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -10,18 +17,16 @@ import { DUMMY_USERS } from '../dummy-users';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  @Input({ required: true }) id!: string;
-  @Input({ required: true }) avatar!: string;
-  @Input({ required: true }) name!: string;
+  @Input({ required: true }) user!: UserType;
   @Output() select = new EventEmitter<string>();
   //select = output<string>();
 
   get imagePath() {
-    return 'assets/users/' + this.avatar;
+    return 'assets/users/' + this.user.avatar;
   };
 
   onClickUser() {
     // This will emit the data and trigger the event with the name of the @output
-    this.select.emit(this.id);
+    this.select.emit(this.user.id);
   }
 }
