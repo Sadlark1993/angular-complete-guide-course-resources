@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
+import { Task } from './task/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -9,11 +10,7 @@ import { TaskComponent } from './task/task.component';
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
-  @Input({ required: true }) user!: {
-    id: string;
-    name: string;
-    avatar: string;
-  };
+  @Input({ required: true }) user!: Task;
   tasks = [
     {
       id: 't1',
