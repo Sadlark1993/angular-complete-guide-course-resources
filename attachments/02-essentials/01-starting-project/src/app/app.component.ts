@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { UserComponent, UserType } from './user/user.component';
 import { DUMMY_USERS } from './dummy-users';
-import { TaskComponent } from "./task/task.component";
+import { TasksComponent } from './tasks/tasks.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, UserComponent, TaskComponent],
+  imports: [HeaderComponent, UserComponent, TasksComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -17,7 +17,8 @@ export class AppComponent {
 
   onSelectUser(id: string) {
     // nullish coalescing operator
-    this.selectedUser = this.users.find((item) => item.id === id) ?? this.users[0];
+    this.selectedUser =
+      this.users.find((item) => item.id === id) ?? this.users[0];
   }
 
   get user() {
