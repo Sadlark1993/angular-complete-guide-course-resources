@@ -3,7 +3,7 @@ import { Component, computed, EventEmitter, input, Input, Output, output, signal
 import { DUMMY_USERS } from '../dummy-users';
 
 // You can user interfaces to do it also
-type UserType = {
+export type UserType = {
   id: string,
   name: string,
   avatar: string

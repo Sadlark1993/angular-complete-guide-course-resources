@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
-import { UserComponent } from './user/user.component';
+import { UserComponent, UserType } from './user/user.component';
 import { DUMMY_USERS } from './dummy-users';
 import { TaskComponent } from "./task/task.component";
 
@@ -13,7 +13,7 @@ import { TaskComponent } from "./task/task.component";
 })
 export class AppComponent {
   users = DUMMY_USERS;
-  selectedUser = DUMMY_USERS[0];
+  selectedUser?: UserType;
 
   onSelectUser(id: string) {
     // nullish coalescing operator
