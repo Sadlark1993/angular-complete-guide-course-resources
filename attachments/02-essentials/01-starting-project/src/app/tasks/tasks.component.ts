@@ -1,16 +1,18 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { Task } from './task/task.model';
+import { FormComponent } from "./form/form.component";
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [TaskComponent],
+  imports: [TaskComponent, FormComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
   @Input({ required: true }) user!: Task;
+  @Input() form = false;
   tasks = [
     {
       id: 't1',

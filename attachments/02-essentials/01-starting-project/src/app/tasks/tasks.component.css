@@ -38,7 +38,7 @@ menu button {
 
 menu button:hover,
 menu button:active {
-  background-color: #a565dd
+  background-color: #a565dd;
 }
 
 ul {
@@ -60,4 +60,12 @@ ul {
   menu {
     width: auto;
   }
+}
+
+app-form {
+  display: none;
+}
+
+app-form.active {
+  display: block;
 }
