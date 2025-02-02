@@ -1,12 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-
-type Task = {
-  id: string;
-  userId: string;
-  title: string;
-  summary: string;
-  dueDate: string;
-};
+import { Task } from './task.model';
 
 @Component({
   selector: 'app-task',

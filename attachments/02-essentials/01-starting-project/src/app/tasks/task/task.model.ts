@@ -1,5 +1,13 @@
 export type Task = {
   id: string;
-  name: string;
-  avatar: string;
+  userId: string;
+  title: string;
+  summary: string;
+  dueDate: string;
 };
+
+export type NewTask = {
+  title: string;
+  summary: string;
+  dueDate: string;
+}

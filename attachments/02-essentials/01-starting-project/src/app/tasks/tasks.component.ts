@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
-import { Task } from './task/task.model';
+import { type NewTask } from './task/task.model';
 import { FormComponent } from "./form/form.component";
+import { type UserType } from '../user/user.model';
 
 @Component({
   selector: 'app-tasks',
@@ -11,7 +12,7 @@ import { FormComponent } from "./form/form.component";
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
-  @Input({ required: true }) user!: Task;
+  @Input({ required: true }) user!: UserType;
   @Input() form = false;
   tasks = [
     {
@@ -50,5 +51,16 @@ export class TasksComponent {
   close() {
     this.form = false;
     console.log('close form');
+  }
+
+  onAddTask(taskData: NewTask) {
+    this.tasks.push({
+      id: new Date().getTime().toString(),
+      userId: this.user.id,
+      title: taskData.title,
+      summary: taskData.summary,
+      dueDate: taskData.dueDate
+    });
+    this.form = false;
   }
 }
