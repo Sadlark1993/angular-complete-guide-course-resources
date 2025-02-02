@@ -46,4 +46,9 @@ export class TasksComponent {
   deleteTask(id: string) {
     this.tasks = this.tasks.filter((item) => item.id !== id);
   }
+
+  close() {
+    this.form = false;
+    console.log('close form');
+  }
 }

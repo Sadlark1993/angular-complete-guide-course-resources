@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-form',
@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './form.component.css'
 })
 export class FormComponent {
+  @Output() closeForm = new EventEmitter<void>();
 
+  onCloseForm() {
+    this.closeForm.emit();
+  }
 }
