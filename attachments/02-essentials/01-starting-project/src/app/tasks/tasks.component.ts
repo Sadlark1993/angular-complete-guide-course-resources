@@ -1,8 +1,10 @@
 import { Component, Input } from '@angular/core';
+
 import { TaskComponent } from './task/task.component';
 import { type NewTask } from './task/task.model';
-import { FormComponent } from "./form/form.component";
+import { FormComponent } from './form/form.component';
 import { type UserType } from '../user/user.model';
+import { TasksService } from './tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -14,38 +16,15 @@ import { type UserType } from '../user/user.model';
 export class TasksComponent {
   @Input({ required: true }) user!: UserType;
   @Input() form = false;
-  tasks = [
-    {
-      id: 't1',
-      userId: 'u1',
-      title: 'Master Angular',
-      summary:
-        'Learn all the basic and advanced features of Angular & how to apply them.',
-      dueDate: '2025-12-31',
-    },
-    {
-      id: 't2',
-      userId: 'u3',
-      title: 'Build first prototype',
-      summary: 'Build a first prototype of the online shop website',
-      dueDate: '2024-05-31',
-    },
-    {
-      id: 't3',
-      userId: 'u3',
-      title: 'Prepare issue template',
-      summary:
-        'Prepare and describe an issue template which will help with project management',
-      dueDate: '2024-06-15',
-    },
-  ];
+
+  constructor(private tasksService: TasksService) {}
 
   get selectedUserTasks() {
-    return this.tasks.filter((task) => task.userId === this.user.id);
+    return this.tasksService.getUserTasks(this.user.id);
   }
 
   deleteTask(id: string) {
-    this.tasks = this.tasks.filter((item) => item.id !== id);
+    this.tasksService.deleteTask.bind;
   }
 
   close() {
@@ -54,13 +33,7 @@ export class TasksComponent {
   }
 
   onAddTask(taskData: NewTask) {
-    this.tasks.push({
-      id: new Date().getTime().toString(),
-      userId: this.user.id,
-      title: taskData.title,
-      summary: taskData.summary,
-      dueDate: taskData.dueDate
-    });
+    this.tasksService.addTask(taskData, this.user.id);
     this.form = false;
   }
 }
