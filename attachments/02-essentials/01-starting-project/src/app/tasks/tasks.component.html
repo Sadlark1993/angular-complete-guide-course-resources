@@ -14,4 +14,4 @@
     }
   </ul>
 </section>
-<app-form [class.active]="form" (closeForm)="close()" (add)="onAddTask($event)" />
+<app-form [class.active]="form" [userId]="user.id" (closeForm)="close()" />

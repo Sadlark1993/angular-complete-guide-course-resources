@@ -24,16 +24,11 @@ export class TasksComponent {
   }
 
   deleteTask(id: string) {
-    this.tasksService.deleteTask.bind;
+    this.tasksService.deleteTask(id);
   }
 
   close() {
     this.form = false;
     console.log('close form');
-  }
-
-  onAddTask(taskData: NewTask) {
-    this.tasksService.addTask(taskData, this.user.id);
-    this.form = false;
   }
 }
