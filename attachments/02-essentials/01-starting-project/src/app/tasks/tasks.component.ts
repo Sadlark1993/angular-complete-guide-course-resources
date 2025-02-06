@@ -23,10 +23,6 @@ export class TasksComponent {
     return this.tasksService.getUserTasks(this.user.id);
   }
 
-  deleteTask(id: string) {
-    this.tasksService.deleteTask(id);
-  }
-
   close() {
     this.form = false;
     console.log('close form');
