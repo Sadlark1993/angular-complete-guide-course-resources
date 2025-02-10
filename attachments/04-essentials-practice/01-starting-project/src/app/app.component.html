@@ -1,3 +1,3 @@
 <app-header />
 <app-user-input (tableData)="onCalculate($event)" />
-<app-result />
+<app-result [result]="tableData" />
