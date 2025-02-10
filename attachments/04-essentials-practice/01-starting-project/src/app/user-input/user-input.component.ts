@@ -1,12 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-type InputObj = {
-  iInvest: number | null,
-  aInvest: number | null,
-  eReturn: number | null,
-  duration: number | null
-}
+import { userInputService } from './user-input.service';
+import { InputObj, OutputObj } from './user-input.models';
 
 @Component({
   selector: 'app-user-input',
@@ -22,9 +18,14 @@ export class UserInputComponent {
     eReturn: null,
     duration: null
   };
+  private userInputService = inject(userInputService);
+  @Output() tableData = new EventEmitter<OutputObj[]>();
 
   onSubmit() {
     console.log(this.data);
+    const tableData = this.userInputService.calculateInvestmentResults(this.data);
+    console.log(tableData);
+    this.tableData.emit(tableData);
   }
 
 }

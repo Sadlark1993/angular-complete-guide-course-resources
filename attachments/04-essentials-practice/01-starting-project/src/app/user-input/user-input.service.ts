@@ -1,24 +1,26 @@
 import { Injectable } from "@angular/core";
+import { InputObj, OutputObj } from "./user-input.models";
 
 @Injectable({ providedIn: 'root' })
 export class userInputService {
-  calculateInvestmentResults(initialInvestment: number, annualInvestment: number, duration: number, expectedReturn: number) {
-    const annualData = [];
-    let investmentValue = initialInvestment;
+  calculateInvestmentResults(data: InputObj) {
+    const annualData: OutputObj[] = [];
+    let investmentValue = data.iInvest!;
 
-    for (let i = 0; i < duration; i++) {
+    for (let i = 0; i < data.duration!; i++) {
       const year = i + 1;
-      const interestEarnedInYear = investmentValue * (expectedReturn / 100);
-      investmentValue += interestEarnedInYear + annualInvestment;
+      const interestEarnedInYear = investmentValue * (data.eReturn! / 100);
+      investmentValue += interestEarnedInYear + data.aInvest!;
       const totalInterest =
-        investmentValue - annualInvestment * year - initialInvestment;
+        investmentValue - data.aInvest! * year - data.aInvest!;
       annualData.push({
         year: year,
         interest: interestEarnedInYear,
         valueEndOfYear: investmentValue,
-        annualInvestment: annualInvestment,
+        // annualInvestment doest go to the table
+        annualInvestment: data.aInvest!,
         totalInterest: totalInterest,
-        totalAmountInvested: initialInvestment + annualInvestment * year,
+        totalAmountInvested: data.iInvest! + data.aInvest! * year,
       });
     }
 
