@@ -1,15 +1,15 @@
-<form>
+<form (ngSubmit)="onSubmit()" ngNativeValidate>
   <div class="form-column">
     <label for="i_invest">INITIAL INVESTMENT</label>
-    <input name="i_invest" id="i_invest" type="number" />
-    <label for="e_return">EXPECTED RETURN</label>
-    <input name="e_return" id="e_return" type="number" />
+    <input name="i_invest" id="i_invest" type="number" [(ngModel)]="data.iInvest" required />
+    <label for="e_return">EXPECTED INTEREST RATE</label>
+    <input name="e_return" id="e_return" type="number" [(ngModel)]="data.eReturn" required />
   </div>
   <div class="form-column">
     <label for="annual_inv">ANNUAL INVESTMENT</label>
-    <input name="annual_inv" id="annual_inv" type="number" />
+    <input name="annual_inv" id="annual_inv" type="number" [(ngModel)]="data.aInvest" required />
     <label for="duration">DURATION</label>
-    <input name="duration" id="duration" type="number" />
+    <input name="duration" id="duration" type="number" [(ngModel)]="data.duration" required />
   </div>
-  <button>CALCULATE</button>
+  <button type="submit">CALCULATE</button>
 </form>
