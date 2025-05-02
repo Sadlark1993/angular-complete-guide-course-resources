@@ -6,10 +6,16 @@
   <hr />
   <div class="row">
     <div class="col-xs-12">
-      <app-server-element
-        *ngFor="let serverElement of serverElements"
-        [srvElement]="serverElement"
-      ></app-server-element>
+      <app-server-element *ngFor="let serverElement of serverElements" [srvElement]="serverElement">
+        <p>
+          <strong *ngIf="element.type === 'server'" style="color: red">{{
+            element.content
+          }}</strong>
+          <strong *ngIf="element.type === 'blueprint'" style="color: blue">{{
+            element.content
+          }}</strong>
+        </p>
+      </app-server-element>
     </div>
   </div>
 </div>
