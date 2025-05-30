@@ -24,7 +24,6 @@ export class CockpitComponent {
     this.blueprintCreated.emit({
       serverName: serverNameInput.value,
       serverContent: this.serverContentInput.nativeElement.value
-
     });
   }
 }
